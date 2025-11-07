@@ -60,10 +60,10 @@ export default function Hero() {
       onMouseLeave={handleMouseLeave}
       className="relative min-h-[92vh] w-full overflow-hidden bg-black text-white"
     >
-      {/* Interactive Spline background */}
+      {/* Interactive Spline background (technology/gaming/digital) */}
       <div className="absolute inset-0">
         <Spline
-          scene="https://prod.spline.design/wwTRdG1D9CkNs368/scene.splinecode"
+          scene="https://prod.spline.design/fcD-iW8YZHyBp1qq/scene.splinecode"
           style={{ width: '100%', height: '100%' }}
         />
         {/* Gradient veil for readability without blocking pointer to Spline */}
@@ -91,7 +91,7 @@ export default function Hero() {
         >
           <motion.div variants={item} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/80 backdrop-blur">
             <SparkleDot />
-            <span>Interactive • Purple/Blue • Futuristic</span>
+            <span>Technology • Gaming • Digital • Interactive</span>
           </motion.div>
 
           <motion.h1
@@ -135,7 +135,7 @@ export default function Hero() {
             <Floaty label="React.js" delay={0} />
             <Floaty label="Node.js" delay={0.1} />
             <Floaty label="MongoDB" delay={0.2} />
-            <Floaty label="Python" delay={0.3} />
+            <Floaty label="Framer Motion" delay={0.3} />
           </motion.div>
         </motion.div>
       </div>
