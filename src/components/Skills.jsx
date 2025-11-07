@@ -24,10 +24,26 @@ const skills = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, staggerChildren: 0.06 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+};
+
 export default function Skills() {
   return (
-    <section id="skills" className="relative w-full bg-black py-16 text-white">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="skills" className="relative w-full overflow-hidden bg-black py-16 text-white">
+      {/* soft aurora background */}
+      <div className="pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(60%_60%_at_50%_40%,black,transparent)]">
+        <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-indigo-500/20 blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -37,15 +53,19 @@ export default function Skills() {
         >
           Skills
         </motion.h2>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {skills.map((group) => (
             <motion.div
               key={group.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur"
+              variants={item}
+              whileHover={{ y: -4 }}
+              className="rounded-xl border border-white/10 bg-white/5 p-5 backdrop-blur transition-colors hover:bg-white/10"
             >
               <div className="flex items-center gap-2">
                 <group.icon className="h-5 w-5 text-cyan-400" />
@@ -58,7 +78,7 @@ export default function Skills() {
               </ul>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
